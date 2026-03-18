@@ -1,0 +1,5 @@
+2026-03-11 14:22:31,015 [    INFO] Hello world! (4029573089.py:1)
+2026-03-11 14:22:49,887 [   ERROR] Hello world! (2394279869.py:1)
+2026-03-11 14:23:00,270 [CRITICAL] Hello world! (3215107014.py:1)
+2026-03-11 14:23:47,742 [    INFO] Null count by column: {'comic_id': 0, 'Title': 0, 'Writer': 0, 'Artist': 0, 'Studio/Publisher': 0, 'Release Year': 0, 'Format': 0, 'Theme (Color Style)': 0, 'Genre': 0, 'Country of Origin': 0, 'Page Count': 0, 'Rating (out of 10)': 0, 'Status': 0, 'Language': 0, 'Age Rating': 0, 'Awards': 6016, 'Volume Count': 0} (3080321376.py:1)
+2026-03-11 14:25:56,614 [    INFO] Dataset directory: ../data/comic_books_10000_dataset.csv, null count by column: {'comic_id': 0, 'Title': 0, 'Writer': 0, 'Artist': 0, 'Studio/Publisher': 0, 'Release Year': 0, 'Format': 0, 'Theme (Color Style)': 0, 'Genre': 0, 'Country of Origin': 0, 'Page Count': 0, 'Rating (out of 10)': 0, 'Status': 0, 'Language': 0, 'Age Rating': 0, 'Awards': 6016, 'Volume Count': 0} with 10000 rows (401074854.py:2)
