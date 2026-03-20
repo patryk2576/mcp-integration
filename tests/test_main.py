@@ -35,7 +35,7 @@ def server():
     proc = subprocess.Popen([sys.executable, "-m", "src.main"],
                             env=os.environ.copy())
     # give the server a moment to bind to the port; in real code you could poll
-    time.sleep(0.5)
+    time.sleep(2)
     yield # provide the server fixture whilst the tests run
     proc.terminate()
     proc.wait(timeout=5)
