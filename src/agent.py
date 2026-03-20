@@ -1,8 +1,7 @@
 import os
 import asyncio
-from agents import Agent, Runner, function_tool, ItemHelpers, TResponseInputItem, trace
+from agents import Agent, Runner, function_tool, ItemHelpers, TResponseInputItem, trace, set_default_openai_key
 from pydantic import BaseModel
-import subprocess
 from typing import Literal
 from dotenv import load_dotenv
 import logging
@@ -13,9 +12,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-load_dotenv(dotenv_path="../.env")
+load_dotenv(override=True)
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+set_default_openai_key(str(OPENAI_API_KEY))
 
 class EvaluationFeedback(BaseModel):
     feedback: str
@@ -91,17 +92,9 @@ async def main():
 
             logger.info("Re-running with feedback")
 
-            input_items.append({"context": f"Feedback: {result.feedback}", "role": "user"})
+            input_items.append({"content": f"Feedback: {result.feedback}", "role": "user"})
 
         logger.info(f"Final homework answer: {latest_result}")
 
 if __name__ == "__main__":
-    
-    subprocess.Popen(
-        ["export", f"OPENAI_API_KEY={OPENAI_API_KEY}"],
-        shell=True,
-        env=os.environ.copy(),
-        stdout=subprocess.DEVNULL # ignore output
-    ).wait()
-
     asyncio.run(main())

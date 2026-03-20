@@ -11,7 +11,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    logger.info(f"Attempting to call the MCP server...")
+    logger.info("Attempting to call the MCP server...")
 
     headers = {
         "Content-Type": "application/json",

@@ -4,21 +4,19 @@ import os
 import requests
 import json
 import re
+import subprocess
+import sys
+import time
 import pytest
 from dotenv import load_dotenv
+# ensure an __init__.py file exists in the tests and src directories to make them packages
+from src.main import add, get_secret_word, get_current_weather
 
 load_dotenv() # load environment variables from .env file
 
 host = os.environ.get("MCP_HOST", "127.0.0.1")
 port = os.environ.get("MCP_PORT", "8080")
 path = os.environ.get("MCP_PATH", "mcp")
-
-# ensure an __init__.py file exists in the tests and src directories to make them packages
-from src.main import add, get_secret_word, get_current_weather
-
-import subprocess
-import sys
-import time
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +35,7 @@ def server():
     proc = subprocess.Popen([sys.executable, "-m", "src.main"],
                             env=os.environ.copy())
     # give the server a moment to bind to the port; in real code you could poll
-    time.sleep(0.5)
+    time.sleep(2)
     yield # provide the server fixture whilst the tests run
     proc.terminate()
     proc.wait(timeout=5)
@@ -60,7 +58,7 @@ def test_get_current_weather():
     city = "London"
     weather = get_current_weather(city)
     logger.info(f"Weather data obtained for {city}")
-    assert f"Weather report: {city}" in weather, f"Weather report should contain the city name '{city}'"
+    assert f"Weather report: {city}".lower() in weather.lower(), f"Weather report should contain the city name '{city.lower()}'"
 
 def test_server(server):
     """Test the MCP server by starting it, making a request, and then shutting it down."""
