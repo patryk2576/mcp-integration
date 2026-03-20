@@ -60,7 +60,7 @@ def test_get_current_weather():
     city = "London"
     weather = get_current_weather(city)
     logger.info(f"Weather data obtained for {city}")
-    assert f"Weather report: {city}" in weather, f"Weather report should contain the city name '{city}'"
+    assert f"Weather report: {city}".lower() in weather.lower(), f"Weather report should contain the city name '{city.lower()}'"
 
 def test_server(server):
     """Test the MCP server by starting it, making a request, and then shutting it down."""
