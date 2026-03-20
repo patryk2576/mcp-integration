@@ -2,7 +2,6 @@ import os
 import asyncio
 from agents import Agent, Runner, function_tool, ItemHelpers, TResponseInputItem, trace, set_default_openai_key
 from pydantic import BaseModel
-import subprocess
 from typing import Literal
 from dotenv import load_dotenv
 import logging
