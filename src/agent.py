@@ -93,7 +93,7 @@ async def main():
 
             logger.info("Re-running with feedback")
 
-            input_items.append({"context": f"Feedback: {result.feedback}", "role": "user"})
+            input_items.append({"content": f"Feedback: {result.feedback}", "role": "user"})
 
         logger.info(f"Final homework answer: {latest_result}")
 
