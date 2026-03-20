@@ -4,7 +4,6 @@ import random
 import sys
 import requests
 from fastmcp import FastMCP
-
 from dotenv import load_dotenv
 
 load_dotenv() # load environment variables from .env file

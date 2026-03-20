@@ -4,21 +4,19 @@ import os
 import requests
 import json
 import re
+import subprocess
+import sys
+import time
 import pytest
 from dotenv import load_dotenv
+# ensure an __init__.py file exists in the tests and src directories to make them packages
+from src.main import add, get_secret_word, get_current_weather
 
 load_dotenv() # load environment variables from .env file
 
 host = os.environ.get("MCP_HOST", "127.0.0.1")
 port = os.environ.get("MCP_PORT", "8080")
 path = os.environ.get("MCP_PATH", "mcp")
-
-# ensure an __init__.py file exists in the tests and src directories to make them packages
-from src.main import add, get_secret_word, get_current_weather
-
-import subprocess
-import sys
-import time
 
 logger = logging.getLogger(__name__)
 
