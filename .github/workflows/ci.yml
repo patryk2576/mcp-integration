@@ -8,6 +8,9 @@ on:
 
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  MCP_HOST: 127.0.0.1
+  MCP_PORT: 8080
+  MCP_PATH: mcp
 
 jobs:
   test:
